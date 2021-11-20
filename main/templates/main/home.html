@@ -1,0 +1,35 @@
+{% extends 'main/base.html'%}
+
+{% block content%}
+   <div class="my-3" id="table">
+          <h1>Library Books</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Availability</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              {% for book in books %}
+                <tr>
+                    <td>{{book.name}}</td>
+                    <td>{{book.category}}</td>
+                    <td>{{book.availability}}</td>
+                    <td>
+                    {% if user.is_superuser%}
+                    <a href="{% url 'main:change' book.id %}"><button class="btn btn-primary btn-sm">Edit Book</button></a>
+                    <a href = "{% url 'main:delete' book.id %}"><button class="btn btn-primary btn-sm mx-3">Delete Book</button></a>
+                    {%else%}
+                    <a href = "{% url 'main:issuebook' book.id %}"><button class="btn btn-primary btn-sm mx-3">Issue Book</button></a>
+                    {%endif%}
+                    </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+{% endblock%}

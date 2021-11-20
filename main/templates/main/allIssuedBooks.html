@@ -1,0 +1,27 @@
+{%extends 'main/base.html'%}
+{% block title %}all books issued{% endblock title %}
+{% block content%}
+   <div id="table" class="my-3">
+         <h2>All issued books</h2>
+        <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                
+                <th scope="col">Student</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Issued on</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              {% for record in records %}
+                <tr>
+                    <td>{{record.student}}</td>
+                    <td>{{record.book}}</td>
+                    <td>{{record.date_issued}}</td>
+                    
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+{% endblock%}

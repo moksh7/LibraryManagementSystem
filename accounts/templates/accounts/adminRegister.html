@@ -1,0 +1,25 @@
+{% extends 'main/base.html'%}
+{% block title %}Signup {% endblock title %}
+{% block content %}
+<h1>Admin Signup</h1>
+{% if check %}
+<form method="post">
+{% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="pass1" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Enter Password Again</label>
+    <input type="password" name="pass2" class="form-control" id="exampleInputPassword1">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endif %}
+
+{% endblock content %}
